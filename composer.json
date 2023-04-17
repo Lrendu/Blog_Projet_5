@@ -1,0 +1,23 @@
+{
+  "name": "louise/projet_5",
+  "description": "autoload",
+    "authors": [
+      {
+        "name": "Louise Rendu",
+        "email": "rendu.louise@gmail.com"
+      }
+    ],
+  "require": {
+      "twig/twig": "^3.5"
+    },
+
+  "autoload": {
+    "psr-4" : {
+      "App\\" : "src/"
+    }
+  },
+
+  "require": {
+    "altorouter/altorouter": "1.2.0"
+  }
+}
