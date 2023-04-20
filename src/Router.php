@@ -1,41 +1,27 @@
 <?php
 
-    namespace App;
+    namespace Routeur;
 
-    class Router
+    use ..\Exceptions\RouteNotFoundException;
+
+    class Routeur
     {
+        private array $routes;
 
-    /**
-    * @var string
-    */
-        private $viewPath;
+            public function register(string $path, callable $action): void
+            {
+                $this->routes[$path] = $action;
+            }
 
-     /**
-      * @var AlttoRouter
-      */
-        private $router;
+            public function resolve(string $uri): mixed
+            {
+                $action = explode('?', $uri)[0];
+                $action = $this->routes[$path] ?? null;
 
-        public function __construct(string $viewPath)
-        {
-            $this->viewPath = $viewPath;
-            $this->router = new \AltoRouter()
-        }
+                if (!is_callable($action)) {
+                    throw new RouteNotFoundException()
+                }
 
-        public function get(string $url, string $view, ?string $name = nul): self
-        {
-            $this->router->map('GET', $url, $view, $name);
-            return $this;
-        }
-
-        public function run(): self
-        {
-            $match = $this->router->match();
-            $view = $match['target'];
-            ob_start();
-            require $this->viewPath . DIRECTORY_SEPARATOR . $view . '.php' ;
-            $content = ob_get_clean();
-            require $this->viewPath. DIRECTORY_SEPARATOR . 'layouts/default.php'
-
-            return $this;
-        }
+                return $action();
+            }
     }
