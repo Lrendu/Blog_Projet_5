@@ -1,41 +1,26 @@
 <?php
 
-    namespace App;
+namespace App;
 
-    class Router
+use App\controllers\Controller;
+use App\controllers\HomeController;
+
+class Router
+{
+    public function handle(array $request): void
     {
+        $url = $request['uri'] ?? '/';
+        $controller = $this->match($url);
 
-    /**
-    * @var string
-    */
-        private $viewPath;
-
-     /**
-      * @var AlttoRouter
-      */
-        private $router;
-
-        public function __construct(string $viewPath)
-        {
-            $this->viewPath = $viewPath;
-            $this->router = new \AltoRouter()
-        }
-
-        public function get(string $url, string $view, ?string $name = nul): self
-        {
-            $this->router->map('GET', $url, $view, $name);
-            return $this;
-        }
-
-        public function run(): self
-        {
-            $match = $this->router->match();
-            $view = $match['target'];
-            ob_start();
-            require $this->viewPath . DIRECTORY_SEPARATOR . $view . '.php' ;
-            $content = ob_get_clean();
-            require $this->viewPath. DIRECTORY_SEPARATOR . 'layouts/default.php'
-
-            return $this;
-        }
+        $controller->render();
     }
+
+    private function match($url): Controller
+    {
+        if ($url === '/') {
+            return new HomeController();
+        }
+
+        return new HomeController();
+    }
+}
