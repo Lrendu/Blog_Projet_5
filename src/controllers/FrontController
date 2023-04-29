@@ -16,7 +16,7 @@ class FrontController
 
     public function index()
     {
-        echo $this->twig->render('homepage.html.twig')['name' => 'Rémi']);
+        echo $this->twig->render('homepage.twig')['name' => 'Rémi']);
     }
 
    }

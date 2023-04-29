@@ -1,14 +1,12 @@
 <?php
-    require 'vendor/autoload.php';
 
-    define('DEBUG_TIME', microtime(true));
+use App\Router;
 
-    use App\Controllers\FrontController;
-    use Twig\Environment;
-    use Twig\Loader\FilesystemLoader;
+require 'vendor/autoload.php';
 
-    $router = new App\Router(dirname(__DIR__) . '/views');
-    $router
-        ->get('/homepage');
-        ->run();
+define('DEBUG_TIME', microtime(true));
 
+define('ROOT', (__DIR__));
+
+$router = new Router();
+$router->handle($_REQUEST);

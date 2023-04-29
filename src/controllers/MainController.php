@@ -1,11 +1,12 @@
 <?php
 
-    namespace App\Controller;
+namespace App\controllers;
 
-    use Twig\Environment;
-    use Twig\Extension\DebugExtension;
-    use Twig\Loader\FilesystemLoader;
-
-    abstract class MainController extends ImportController
-
-    protected $twig = null;
+class MainController extends Controller
+{
+    public function index()
+    {
+        $this->twig->display('../views/Home.html.twig');
+        echo $twig->render('../views/homepage.html.twig');
+    }
+}
