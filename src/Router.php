@@ -2,8 +2,8 @@
 
 namespace App;
 
-use App\controllers\Controller;
-use App\controllers\HomeController;
+use App\Controller\Controller;
+use App\Controller\HomeController;
 
 class Router
 {

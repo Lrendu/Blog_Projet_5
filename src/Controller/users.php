@@ -9,4 +9,3 @@ $user = [
     'password' => "roserose",
     'profile_picture' => '1'
 ];
-}
