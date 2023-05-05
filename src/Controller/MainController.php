@@ -6,7 +6,7 @@ class MainController extends Controller
 {
     public function index()
     {
-        $this->twig->display('../views/Home.html.twig');
-        echo $twig->render('../views/homepage.html.twig');
+        $this->twig->display('../View/Home.html.twig');
+        echo $twig->render('../View/homepage.html.twig');
     }
 }
