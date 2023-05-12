@@ -20,6 +20,11 @@ class PostController extends Controller
 
     private function getPost(string $identifier): Post 
     {
-        // ici il faudra faire appel à la base de données pour récupérer l'article de blog dans un objet Post
+        $postRepository = $this->getRepository(Post::class);
+        $post = $postRepository->findOneBy(['identifier' => $identifier]);
+        if (!$post) {
+            // handle post not found error
+        }
+        return $post;
     }
 }
