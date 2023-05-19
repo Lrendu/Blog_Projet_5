@@ -1,32 +1,42 @@
+<?php
+
+$query = $pdo->query('SELECT * FROM posts');
+$posts = $query->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Articles</title>
-        <link href="style.css" rel="stylesheet" />
-    </head>
+<html lang="fr">
 
-    <body>
-        <h1>Le super blog de l'AVBN !</h1>
-        <div class="news">
-            <h3>
-                <?= htmlspecialchars($post['title']) ?>
-                <em>le <?= $post['created_at'] ?></em>
-            </h3>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .post {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
 
-            <p>
-                <?= nl2br(htmlspecialchars($post['content'])) ?>
-            </p>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="single-item pb_slide_v2 slick-initialized slick-slider slick-dotted">
-                    <div class="slick-list" style="height: 712.359px;">
-                        <div class="slick-track" style="opacity: 1; width: 12210px; transform: translate3d(-1110px, 0px, 0px);">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </body>
+<body>
+  <div class="container">
+    <h1 class="mt-4">Articles</h1>
+    <hr>
+
+    <?php foreach ($posts as $post): ?>
+    <div class="post">
+      <h2><?php echo $post['title']; ?></h2>
+      <p><strong>Author:</strong> <?php echo $post['author']; ?></p>
+      <p><strong>Date:</strong> <?php echo $post['created_at']; ?></p>
+      <p><?php echo $post['content']; ?></p>
+      <a href="single.php?id=<?php echo $post['id']; ?>" class="btn btn-primary">Read More</a>
+    </div>
+    <?php endforeach; ?>
+
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
