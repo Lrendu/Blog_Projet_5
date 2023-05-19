@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Post;
+
 class PostRepository extends AbstractRepository
 {
     public function __construct(PDO $connection)
