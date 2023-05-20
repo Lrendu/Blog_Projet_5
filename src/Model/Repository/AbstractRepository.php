@@ -1,13 +1,19 @@
 <?php
 
+namespace App\Model\Repository;
+
+use PDO;
+
 abstract class AbstractRepository
 {
-    protected $connection;
-    protected $tableName;
+    protected PDO $connection;
 
-    public function __construct(PDO $connection)
+    public function __construct()
     {
-        $this->connection = $connection;
+        $user = 'testuser';
+        $password = 'testpassword';
+        $dsn = 'mysql:host=127.0.0.1;port=3306;dbname=blog_lr;';
+        $this->connection = new PDO($dsn, $user, $password);
     }
 
     public function setTableName(string $tableName)
