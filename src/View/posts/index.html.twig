@@ -28,10 +28,10 @@ $posts = $query->fetchAll(PDO::FETCH_ASSOC);
     <?php foreach ($posts as $post): ?>
     <div class="post">
       <h2><?php echo $post['title']; ?></h2>
-      <p><strong>Author:</strong> <?php echo $post['author']; ?></p>
+      <p><strong>Auteur:</strong> <?php echo $post['author']; ?></p>
       <p><strong>Date:</strong> <?php echo $post['created_at']; ?></p>
       <p><?php echo $post['content']; ?></p>
-      <a href="single.php?id=<?php echo $post['id']; ?>" class="btn btn-primary">Read More</a>
+      <a href="single.php?id=<?php echo $post['id']; ?>" class="btn btn-primary">Lire la suite</a>
     </div>
     <?php endforeach; ?>
 
