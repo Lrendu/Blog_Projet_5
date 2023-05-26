@@ -2,8 +2,10 @@
 
 namespace App\Model;
 
-class Post
+class Post extends AbstractModel
 {
+    protected $table = 'posts';
+
     private string $title;
 
     private string $content;

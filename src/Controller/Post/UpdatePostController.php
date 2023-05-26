@@ -29,6 +29,7 @@ class UpdatePostController extends PostController
             'title' => $post->getTitle(),
             'content' => $post->getContent(),
             'created_at' => $post->getCreatedAt(),
+            'updated_at' => $post->getUpdatedAt(),
             'description' => $post->getDescription(),
             'media' => $post->getMedia(),
         ]);
